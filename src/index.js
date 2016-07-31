@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './components/Main'
+import './stylesheets/style.scss'
+import Main from './components/Main';
+import RecipesContainer from './containers/RecipesContainer';
 
-ReactDOM.render(<Main/>,document.getElementById('app'));
+ReactDOM.render(<RecipesContainer/>,document.getElementById('app'));
