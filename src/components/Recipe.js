@@ -26,14 +26,13 @@ function IngredientsWrapper(props){
                             {ingredients}
                         </div>
                         <div>
-                            <button type="button" className="btn btn-danger">Delete</button>
+                            <button type="button" className="btn btn-danger" onClick={props.onDeleteClick}>Delete</button>
                             <button type="button" className="btn btn-success" data-toggle="modal" data-target="#upsertRecipeModal">Edit</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <UpsertRecipe mode={'Edit'}/>
         </div>
     )
 }
@@ -41,6 +40,7 @@ function IngredientsWrapper(props){
 IngredientsWrapper.propTypes = {
     recipe:React.PropTypes.object.isRequired,
     onHeaderClick: React.PropTypes.func.isRequired,
+    onDeleteClick: React.PropTypes.func.isRequired,
     panelClasses: React.PropTypes.object.isRequired
 }
 

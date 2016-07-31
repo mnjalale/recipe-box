@@ -8,6 +8,21 @@ class RecipesContainer extends React.Component{
         this.state={
             recipes:[]
         };
+
+    }
+
+    handleReceiptsUpdateAfterDeleteion(e){
+        let deletedRecipe = e;
+        console.log('deletion success');
+        console.log(deletedRecipe);
+        let recipes = this.state.recipes.filter(function(current){
+            return current.recipeName !== deletedRecipe.recipeName;
+        });
+
+        this.setState({
+            recipes:recipes
+        });
+
     }
 
     componentDidMount(){
@@ -18,7 +33,7 @@ class RecipesContainer extends React.Component{
     }
 
     render(){
-        return <Recipes recipes={this.state.recipes}/>
+        return <Recipes recipes={this.state.recipes} onUpdateRecipesAfterDeletion={(e)=> this.handleReceiptsUpdateAfterDeleteion(e)} />
     }
 
 }

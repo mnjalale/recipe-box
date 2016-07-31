@@ -32,15 +32,31 @@ export function getRecipes(){
     }
 }
 
+export function deleteRecipe(recipeName){
+    console.log('Reached delete recipe');
+    let recipes = getRecipes();
+
+    let newRecipes = recipes.filter(function(recipe){
+        return recipe.recipeName !== recipeName;
+    });
+
+    localStorage.setItem('recipes',JSON.stringify(newRecipes));
+}
 
 export function saveRecipe(recipe){
     let recipes = getRecipes();
 
-    let existingRecipe = recipes.filter(function(current){
+    let existingRecipes = recipes.filter(function(current){
         return recipe.recipeName===current.recipeName;
     });
 
-    if(existingRecipe.length>0){
+    if(existingRecipes.length>0){
+        //update
+        for(let i=0;i<recipes.length;i++){
+            if(recipes[i].recipeName===recipe.recipeName){
+                recipes[i].ingredients=recipe.ingredients;
+            }
+        }
 
     }else{
         recipes.push(recipe);

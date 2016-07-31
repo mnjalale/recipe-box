@@ -31,6 +31,13 @@ class RecipeContainer extends React.Component{
         }
     }
 
+    handleDelete(){
+        let recipe = this.props.recipe;
+        recipeHelper.deleteRecipe(recipe.recipeName);
+        this.props.onUpdateRecipesAfterDeletion(recipe);
+
+    }
+
     componentDidMount(){
 
     }
@@ -39,7 +46,8 @@ class RecipeContainer extends React.Component{
         return (
            <Recipe recipe={this.props.recipe}
                     panelClasses={this.state.panelClasses}
-                    onHeaderClick={()=> this.handleHeaderClick()}/>
+                    onHeaderClick={()=> this.handleHeaderClick()}
+                    onDeleteClick={()=> this.handleDelete()}/>
         )
     }
 }
